@@ -6,7 +6,6 @@ import close from '@icons/icon_close.png'
 
 const OrderItem = ({ product, indexValue }) => {
 	const { removeFromCart } = useContext(AppContext)
-	console.log(indexValue)
 	const handleRemove = index => {
 		removeFromCart(index)
 	}
