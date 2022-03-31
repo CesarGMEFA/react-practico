@@ -1,0 +1,37 @@
+@use 'vars';
+
+p {
+  margin: 0;
+}
+
+.section-404 {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  width: 400px;
+  height: 400px;
+  font-weight: bolder;
+  border-radius: 50%;
+  background-color: var(--very-light-pink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-error {
+  font-size: 1.5em;
+}
+
+.center-404 {
+  font-size: 6em;
+  display: inline-block;
+}
+
+.center-404 > .center-span {
+  font-size: .7em;
+}
