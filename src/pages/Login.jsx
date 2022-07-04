@@ -19,7 +19,7 @@ const Login = () => {
 	return (
 		<div className="Login">
 			<div className="Login-container">
-				<img src={yardSale} alt="logo" className="logo" />
+				<img src={yardSale} alt="logo" className="Login-container_logo" />
 				<form action="/" className="form" ref={form}>
 					<label htmlFor="email" className="label">Email address</label>
 					<input type="text" name="email" placeholder="platzi@example.cm" className="input input-email" />

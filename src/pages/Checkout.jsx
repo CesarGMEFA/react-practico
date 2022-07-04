@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import AppContext from '@context/AppContext'
+
 import { OrderItem } from '../components/OrderItem';
 import { Menu } from '../components/Menu';
+
 import '../styles/Checkout.scss';
 
 const Checkout = () => {
+
+	const { state } = useContext(AppContext);
+	const date = new Date().toLocaleDateString();
+	const today = date.split('/').join('.');
+
+	const numberArticles = state.cart.length
+
+	const total = state.cart.reduce((acum, product) => {
+		return acum += product.price
+	}, 0)
+
 	return (
 		<div className="Checkout">
 			<div className="Checkout-container">
@@ -11,13 +26,18 @@ const Checkout = () => {
 				<div className="Checkout-content">
 					<div className="order">
 						<p>
-							<span>03.25.21</span>
-							<span>6 articles</span>
+							<span>{today}</span>
+							<span>{`${numberArticles} articles`}</span>
 						</p>
-						<p>$560.00</p>
+						<p>${total}</p>
 					</div>
 				</div>
-				<OrderItem />
+				{state.cart.map((product) => (
+					<OrderItem 
+					product={product}
+					key={`orderItem-${product.id}`}
+					/>
+				))}
 			</div>
 		</div>
 	);

@@ -9,7 +9,7 @@
 	background-color: white;
 	position: absolute;
 	right: 0;
-	top: 60px;
+	top: 70px;
 	bottom: auto;
 }
 .title-container {
@@ -18,6 +18,9 @@
 .title-container img {
 	transform: rotate(180deg);
 	margin-right: 14px;
+}
+.title-container_arrow {
+	cursor: pointer;
 }
 .title {
 	font-size: var(--lg);

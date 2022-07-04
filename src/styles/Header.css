@@ -1,32 +1,48 @@
 @use 'vars';
 
 .nav-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 0 24px;
   border-bottom: 1px solid var(--very-light-pink);
 }
+
 .menu {
   display: none;
 }
+
 .nav-logo {
   width: 100px;
 }
+
 .navbar-left ul,
 .navbar-right ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 60px;
 }
+
 .navbar-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .navbar-left ul {
   margin-left: 12px;
 }
+
 .navbar-left ul li a,
 .navbar-right ul li a {
   text-decoration: none;
@@ -35,21 +51,24 @@
   padding: 8px;
   border-radius: 8px;
 }
+
 .navbar-left ul li a:hover,
 .navbar-right ul li a:hover {
   border: 1px solid var(--hospital-green);
   color: var(--hospital-green);
 }
+
 .navbar-email {
   color: var(--very-light-pink);
   font-size: var(--sm);
   margin-right: 12px;
   cursor: pointer;
 }
+
 .navbar-shopping-cart {
   position: relative;
-  cursor: pointer;
 }
+
 .navbar-shopping-cart div {
   width: 16px;
   height: 16px;
@@ -60,14 +79,20 @@
   position: absolute;
   top: -6px;
   right: -3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 @media (max-width: 640px) {
   .menu {
     display: block;
-    cursor: pointer;
   }
   .navbar-left ul {
     display: none;
@@ -76,3 +101,4 @@
     display: none;
   }
 }
+/*# sourceMappingURL=Header.css.map */

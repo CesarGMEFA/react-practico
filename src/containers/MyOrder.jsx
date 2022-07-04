@@ -1,14 +1,20 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
 import { OrderItem } from '../components/OrderItem';
+
 import '../styles/MyOrder.scss';
+
 import AppContext from '@context/AppContext'
+
 import flechita from '@icons/flechita.svg'
 
-const MyOrder = () => {
+const MyOrder = ({ toggleOrders, setToggleOrders }) => {
+	
 	const { state } = useContext(AppContext)
-
+	console.log('state', state)
 	const sumTotal = () => {
-		const reducer = (accumalator, currentValue) => accumalator + currentValue[0].price
+		const reducer = (accumalator, currentValue) => accumalator + currentValue.price
 		const sum = state.cart.reduce(reducer, 0)
 		return sum
 	}
@@ -24,15 +30,18 @@ const MyOrder = () => {
 	return (
 		<aside className="MyOrder">
 			<div className="title-container">
-				<img src={flechita} alt="arrow" />
+				<img src={flechita} alt="arrow"  
+					onClick={() => setToggleOrders(!toggleOrders)}
+					className="title-container_arrow"
+				/>
 				<p className="title">My order</p>
 			</div>
 			<div className="my-order-content">
 				{state.cart.map((product, index) => (
 					<OrderItem 
-					key={index} 
+					key={`orderItem-${product.id}`} 
 					indexValue={index}
-					product={product[0]} 
+					product={product} 
 					/>
 				))}
 				<div className="order">
@@ -43,9 +52,11 @@ const MyOrder = () => {
 						{formatoPrecio(sumTotal())}
 					</p>
 				</div>
-				<button className="primary-button">
-					Checkout
-				</button>
+				<Link rel="stylesheet" to="/checkout" >
+					<button className="primary-button">
+						Checkout
+					</button>
+				</Link>
 			</div>
 		</aside>
 	);
