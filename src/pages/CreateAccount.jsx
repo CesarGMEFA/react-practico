@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/CreateAccount.scss';
 
 const CreateAccount = () => {
+	console.log('create account')
 	return (
 		<div className="CreateAccount">
 			<div className="CreateAccount-container">

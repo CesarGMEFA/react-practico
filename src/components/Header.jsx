@@ -1,20 +1,32 @@
 import React, { useState, useContext } from 'react';
+import { MobileMenu } from '@components/MobileMenu';
 import { Menu } from './Menu';
-import '@styles/Header.scss'
+import '@styles/Header.scss';
 import { MyOrder } from '../containers/MyOrder';
-import menu from '@icons/icon_menu.svg'
-import logo from '@logos/logo_yard_sale.svg'
-import AppContext from '@context/AppContext'
-import shoppingCart from '@icons/icon_shopping_cart.svg'
+import logo from '@logos/logo_yard_sale.svg';
+import AppContext from '@context/AppContext';
+
+import menu from '@icons/icon_menu.svg';
+import shoppingCart from '@icons/icon_shopping_cart.svg';
 
 const Header = () => {
+	const [ burger, setBurger] = useState(false)
 	const [toggle, setToggle] = useState(false)
 	const [toggleOrders, setToggleOrders] = useState(false)
 	const { state: {cart} } = useContext(AppContext)
-
-	const handleToggle = () => {
-		setToggle(!toggle)
+	
+	const handleToggle = (option, setOption) => {
+		if ( toggle === false && toggleOrders === false) {
+			setOption(!option)
+		} else if (toggleOrders === true) {
+			setToggleOrders(!toggleOrders)
+			setOption(!option)
+		} else if (toggle === true) {
+			setToggle(!toggle)
+			setOption(!option)
+		}
 	}
+
 	// const verifyCart = (cartNumber) => {
   //   if (cartNumber && (cartNumber < 9)) {
   //     return (
@@ -31,7 +43,7 @@ const Header = () => {
 
   return (
 		<nav className='nav-header'>
-			<img src={menu} alt="menu" className="menu" />
+			<img src={menu} alt="menu" className="menu" onClick={() => setBurger(!burger)}/>
 			<div className="navbar-left">
 				<img src={logo} alt="logo" className="nav-logo" />
 				<ul>
@@ -57,20 +69,21 @@ const Header = () => {
 			</div>
 			<div className="navbar-right">
 				<ul>
-					<li className="navbar-email" onClick={handleToggle}>
+					<li className="navbar-email" onClick={() => handleToggle(toggle, setToggle)}>
 						platzi@example.com
 					</li>
 					<li 
 						className="navbar-shopping-cart" 
-						onClick={() => setToggleOrders(!toggleOrders)}>
+						onClick={() => handleToggle(toggleOrders, setToggleOrders)}>
 						<img src={shoppingCart} alt="shopping cart" />
 						{/* {verifyCart(cart.length)} */}
 						{cart.length > 0 && <div>{cart.length}</div>}
 					</li>
 				</ul>
 			</div>
+			{burger && <MobileMenu />}
 			{toggle && <Menu /> }
-			{toggleOrders && <MyOrder />}
+			{toggleOrders && <MyOrder toggleOrders={toggleOrders} setToggleOrders={setToggleOrders}/>}
 		</nav>
 	);
 };

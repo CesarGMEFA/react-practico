@@ -7,25 +7,27 @@ const initialState = {
 const useInitialState = () => {
   const [state, setState] = useState(initialState)
 
-  const addToCart = (payload) => {
-    setState({
-      ...state,
-      cart: [...state.cart, payload]
-    })
-  }
   // const addToCart = (payload) => {
-	// 	if(!state.cart.includes(payload)){
-	// 		setState({
-	// 			...state,
-	// 			cart: [...state.cart, payload]
-	// 		});
-	// 	}
-	// };
+  //   setState({
+  //     ...state,
+  //     cart: [...state.cart, payload]
+  //   })
+  // }
+  const addToCart = (payload) => {
+		if(!state.cart.includes(payload)){
+			setState({
+				...state,
+				cart: [...state.cart, payload]
+			});
+		}
+	};
 
-  const removeFromCart = (indexValue) => {
+  const removeFromCart = (payload) => {
+    const newArray = state.cart.filter(product => product != payload);
     setState({
       ...state,
-      cart: state.cart.filter((_, index) => index !== indexValue)
+      cart: [...newArray],
+      total: state.total - payload.price
     })
   }
 

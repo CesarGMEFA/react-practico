@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,IAAI,CAAJ,MAAI;AAEJ,AAAA,YAAY,CAAC;EACZ,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,wBAAwB;EAC/C,GAAG,EAAE,IAAI;EACT,aAAa,EAAE,MAAM;EACrB,MAAM,EAAE,SAAS;CACjB;;AAED,MAAM,EAAE,SAAS,EAAE,KAAK;EACvB,AAAA,YAAY,CAAC;IACZ,qBAAqB,EAAE,wBAAwB;GAC/C",
+    "sources": [
+        "ProductList.scss"
+    ],
+    "names": [],
+    "file": "ProductList.css"
+}
